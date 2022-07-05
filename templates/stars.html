@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Stars {% endblock %}
+
+{% block content %}
+
+<div>
+{% for i in range(0, 5) %}
+    {% if star-i == 0.5%}
+    <i class="bi bi-star-half"></i>
+    {% elif star-i >= 1 %}
+    <i class="bi bi-star-fill"></i>
+    {% else %}
+    <i class="bi bi-star"></i>
+    {% endif %}
+{% endfor %}
+</div>
+
+
+{% endblock %}

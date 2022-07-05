@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Star Rating Project</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/new.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <script src="https://kit.fontawesome.com/332a215f17.js" crossorigin="anonymous"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <fieldset class="rating" name="rating" id="rate333">
+        <input type="radio" name="rating" value=5 />
+        <label class="full" for="star5"></label>
+
+        <input type="radio" name="rating" value=4.5 />
+        <label class="half" for="star4half"></label>
+
+        <input type="radio" name="rating" value=4 />
+        <label class="full" for="star4"></label>
+
+        <input type="radio" name="rating" value=3.5 />
+        <label class="half" for="star3half"></label>
+
+        <input type="radio" name="rating" value=3 />
+        <label class="full" for="star3"></label>
+
+        <input type="radio" name="rating" value=2.5 />
+        <label class="half" for="star2half"></label>
+
+        <input type="radio" name="rating" value=2 />
+        <label class="full" for="star2"></label>
+
+        <input type="radio" name="rating" value=1.5 />
+        <label class="half" for="star1half"></label>
+
+        <input type="radio" name="rating" value=1 />
+        <label class="full" for="star1"></label>
+
+        <input type="radio" name="rating" value=0.5 />
+        <label class="half" for="starhalf"></label>
+    </fieldset>
+
+    <br>
+
+    <fieldset class="rating" name="rating" id="rate1">
+        <input type="radio" name="rating" value=5 />
+        <label class="full" for="star5"></label>
+
+        <input type="radio" name="rating" value=4.5 />
+        <label class="half" for="star4half"></label>
+
+        <input type="radio" name="rating" value=4 />
+        <label class="full" for="star4"></label>
+
+        <input type="radio" name="rating" value=3.5 />
+        <label class="half" for="star3half"></label>
+
+        <input type="radio" name="rating" value=3 />
+        <label class="full" for="star3"></label>
+
+        <input type="radio" name="rating" value=2.5 />
+        <label class="half" for="star2half"></label>
+
+        <input type="radio" name="rating" value=2 />
+        <label class="full" for="star2"></label>
+
+        <input type="radio" name="rating" value=1.5 />
+        <label class="half" for="star1half"></label>
+
+        <input type="radio" name="rating" value=1 />
+        <label class="full" for="star1"></label>
+
+        <input type="radio" name="rating" value=0.5 />
+        <label class="half" for="starhalf"></label>
+    </fieldset>
+
+    <br>
+
+    <fieldset class="rating" name="rating" id="rate2">
+        <input type="radio" name="rating" value=5 />
+        <label class="full" for="star5"></label>
+
+        <input type="radio" name="rating" value=4.5 />
+        <label class="half" for="star4half"></label>
+
+        <input type="radio" name="rating" value=4 />
+        <label class="full" for="star4"></label>
+
+        <input type="radio" name="rating" value=3.5 />
+        <label class="half" for="star3half"></label>
+
+        <input type="radio" name="rating" value=3 />
+        <label class="full" for="star3"></label>
+
+        <input type="radio" name="rating" value=2.5 />
+        <label class="half" for="star2half"></label>
+
+        <input type="radio" name="rating" value=2 />
+        <label class="full" for="star2"></label>
+
+        <input type="radio" name="rating" value=1.5 />
+        <label class="half" for="star1half"></label>
+
+        <input type="radio" name="rating" value=1 />
+        <label class="full" for="star1"></label>
+
+        <input type="radio" name="rating" value=0.5 />
+        <label class="half" for="starhalf"></label>
+    </fieldset>
+
+    <br>
+
+    <script>
+        $(document).ready(function () {
+            // Check Radio-box
+
+            $('.rating input').click(function (evt) {
+                field = evt.target.parentElement
+                console.log(evt.target)
+                console.log(evt.target.parentElement)
+                // $(".rating span").removeClass('checked');
+                // $(this).parent().addClass('checked');
+            });
+
+            $('input:radio').change(
+                function () {
+                    var userRating = this.value;
+                    // input_text.value = userRating;
+                });
+        });
+    </script>
+</body>
+
+</html>

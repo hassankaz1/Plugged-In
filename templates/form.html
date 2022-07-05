@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/form.css">
+
+<script>
+
+
+
+    function initMap(data) {
+
+        const lat = document.getElementById("lat")
+        const lng = document.getElementById("lng")
+
+        console.log(lat)
+        console.log(lng)
+
+        // map = new google.maps.Map(document.getElementById("map"), {
+        //     center: { lat: 70, lng: -32 },
+        //     zoom: 12,
+        //     mapTypeControlOptions: {
+        //         mapTypeIds: ['roadmap']
+        //     },
+        //     // styles: mapStyle
+        // });
+
+
+        const input = document.getElementById("autocomplete2");
+        const options = {
+            // bounds: defaultBounds,
+            componentRestrictions: { country: "us" },
+            fields: ["address_components", "geometry", "name"],
+            strictBounds: false,
+            types: ["establishment"],
+        };
+        const autocomplete = new google.maps.places.Autocomplete(input, options);
+
+
+        autocomplete.addListener("place_changed", () => {
+            const place = autocomplete.getPlace();
+            lat.value = place.geometry.location.lat()
+            lng.value = place.geometry.location.lng()
+        })
+
+    }
+
+
+
+
+
+
+</script>
+<style>
+    body {
+        background-image: url(https://aaaliving.acg.aaa.com/wp-content/uploads/2021/08/questions-about-electric-car-768x432.jpg);
+    }
+
+    .navbar {
+        background-color: transparent;
+    }
+</style>
+
+
+
+
+<div class="container-fluid">
+    <div class="row main-content bg-success text-center">
+        <div class="col-md-4 text-center company__info">
+            <span class="company__logo">
+                <h2><span class="fa fa-android"></span></h2>
+            </span>
+            <h4 class="company_title">Your Company Logo</h4>
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-12 login_form container ">
+            <div class="container-fluid">
+                <div class="row">
+                    <h2>Log In</h2>
+                </div>
+                <div class="row">
+                    <form control="" class="form-group">
+                        <div class="row">
+                            <input class="form__input" type="text" id="autocomplete2" placeholder="enter your place">
+
+                        </div>
+
+                        <div class="options">
+                            <h2>Select Port Type<br><small>(leave empty for all results)</small></h2>
+                            <div class="inline">
+
+                                <label for="click">
+                                    <input name="port" type="checkbox" value=27 id="tesla">
+                                    Tesla</label>
+
+
+                                <label for="sae">
+                                    <input name="port" type="checkbox" id="jplug" value=1>
+                                    J Plug</label>
+
+                                <label for="sae">
+                                    <input name="port" type="checkbox" id="css" value=32>
+                                    CSS (Type 1)</label>
+                            </div>
+                        </div>
+
+                        <div class="range">
+                            <div class="sliderValue">
+                                <span id="val">100</span>
+                            </div>
+                            <div class="field">
+                                <div class="value left">
+                                    0</div>
+                                <input id="range" type="range" min="10" max="200" value="100" steps="1">
+                                <div class="value right">
+                                    200</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <button class="submit sub">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    const slideValue = document.getElementById("val");
+    const inputSlider = document.getElementById("range");
+    inputSlider.oninput = (() => {
+        let value = inputSlider.value;
+        slideValue.textContent = value;
+        slideValue.style.left = (value / 2) + "%";
+        slideValue.classList.add("show");
+    });
+    inputSlider.onblur = (() => {
+        slideValue.classList.remove("show");
+    });
+</script>
+
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvG9-AKwWAgw5uYRi0kaQfWxeeWuiRr1g&libraries=places&callback=initMap">
+    </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+
+
+{% endblock %}
