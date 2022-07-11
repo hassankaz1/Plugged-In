@@ -1,20 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,700;1,700&display=swap');
+@import 'https://fonts.googleapis.com/css?family=Overlock:400,400i,700|Oleo+Script';
 
+body {
+    /* background-image: url(https://singularityhub.com/wp-content/uploads/2022/03/electric-vehicles-EVs-cars.jpg); */
+    background-color: #D3D3D3;
+    font-family: 'Roboto Mono';
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+/* body {
+    width: 100%;
+} */
+
+/* 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto Mono', monospace;
+} */
+
+h2 {
+    font-weight: 700;
+    text-decoration: underline;
+    
+}
+
+h5,
+h2 {
+    color: #F6F5F0;
 }
 
 
+
+
+
+
+
+.curr {
+    background-color: transparent;
+    height: 5em;
+    width: 60%;
+    font-size: 1.5em;
+}
+
 .range {
     height: 80px;
-    width: 380px;
-    background: #fff;
+    width: 100%;
+    background: white;
     border-radius: 10px;
     padding: 0 65px 0 45px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
 .sliderValue {
@@ -45,7 +86,7 @@
     content: '';
     height: 100%;
     width: 100%;
-    background: #664AFF;
+    background: #5F9EA0;
     border: 3px solid #fff;
     z-index: -1;
     left: 50%;
@@ -58,25 +99,32 @@
 
 .field {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     height: 100%;
     position: relative;
+    color: #5F9EA0;
 }
 
 .field .value {
     position: absolute;
     font-size: 18px;
-    color: #664AFF;
+    color: #5F9EA0;
     font-weight: 600;
 }
 
 .field .value.left {
     left: -22px;
+    top: 13px;
 }
 
 .field .value.right {
     right: -43px;
+    top: 13px;
+}
+
+.range {
+    color: #5F9EA0;
 }
 
 .range input {
@@ -96,8 +144,8 @@
     height: 20px;
     background: red;
     border-radius: 50%;
-    background: #664AFF;
-    border: 1px solid #664AFF;
+    background: #5F9EA0;
+    border: 1px solid #5F9EA0;
     cursor: pointer;
 }
 
@@ -105,40 +153,51 @@
     -webkit-appearance: none;
     width: 20px;
     height: 20px;
-    background: red;
     border-radius: 50%;
     background: #664AFF;
     border: 1px solid #664AFF;
     cursor: pointer;
 }
 
-.range input::-moz-range-progress {
-    background: #664AFF; //this progress background is only shown on Firefox
-}
+
 
 .main-content {
-    width: 50%;
-    border-radius: 20px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
+    width: 75%;
+    /* box-shadow: 0 5px 5px rgba(0, 0, 0, .4); */
     margin: 5em auto;
-    display: flex;
+    /* display: flex; */
+    position: relative;
+    height: 700px;
+    display: inline-block;
+
 }
 
 .company__info {
-    background-color: #008080;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    /* background-image: url(https://singularityhub.com/wp-content/uploads/2022/03/electric-vehicles-EVs-cars.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 60% 30%; */
+
+    background-image: url(https://www.ksnlaw.com/blog/wp-content/uploads/2020/03/b.jpg);
+    background-position: 90% 30%;
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #fff;
+    text-align: left;
+    color: black;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    margin-top: -200px;
+    z-index: 0;
+    /* width: 10em; */
 }
 
-.fa-android {
-    font-size: 3em;
-}
 
-@media screen and (max-width: 640px) {
+
+
+/* @media screen and (max-width: 640px) {
     .main-content {
         width: 90%;
     }
@@ -157,16 +216,18 @@
     .main-content {
         width: 70%;
     }
-}
+} */
 
 
 
 .login_form {
-    background-color: #fff;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+    right: 0;
+
 }
 
 form {
@@ -205,24 +266,145 @@ margin-bottom: 1em;
 
 */
 
+.row {
+    justify-content: center;
+    align-items: center;
+
+}
+
+.sub {
+    background-color: #F9DFC7;
+    width: 50%;
+    height: 3em;
+    font-size: 1em;
+    margin-top: 2em;
+}
+
+
+.curr:hover,
 .sub:hover,
 .sub:focus {
-    background-color: #008006;
+    /* background-color: #008006; */
     color: #fff;
 }
 
 
+
 .container {
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0; */
-    /* right: 0; */
-    /* bottom: 0; */
-    margin: auto;
+    /* position: relative; */
     /* width: 260px; */
     /* height: 260px; */
-    border-radius: 5px;
-    background: rgba(3, 3, 3, 0.25);
-    box-shadow: 1px 1px 50px #000;
-    /* display: none; */
+    /* border-radius: 5px; */
+    /* background: rgba(3, 3, 3, 0.25); */
+    /* box-shadow: 1px 1px 50px #000; */
+    background-color: #474A59;
+    /* color: white; */
+    font-weight: 700;
+
+}
+
+.inner {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.space {
+    margin-bottom: 20px;
+}
+
+
+input {
+    background: white;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #45494C;
+    font-size: 14px;
+    /* color: #959595; */
+    padding: 8px 0;
+    margin-top: 20px;
+    font-weight: 700;
+    color: black;
+    font-size: 1.5em;
+}
+
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: calc(100% - 40px);
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    display: inline-block;
+}
+
+input[type="radio"][id^="port"] {
+    display: none;
+}
+
+label {
+    border: 1px solid #fff;
+    padding: 5px;
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+    cursor: pointer;
+}
+
+label:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+}
+
+label img {
+    height: 50px;
+    width: 50px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+
+:checked+label {
+    border-color: #ddd;
+}
+
+:checked+label:before {
+    content: "✓";
+    background-color: grey;
+    transform: scale(1);
+}
+
+:checked+label img {
+    transform: scale(0.9);
+    /* box-shadow: 0 0 5px #333; */
+    z-index: -1;
+}
+
+.right {
+    align-items: center;
+    justify-content: center;
+
 }

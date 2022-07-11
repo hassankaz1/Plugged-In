@@ -13,388 +13,210 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/static/pro-card.css">
 
+
     <link rel="stylesheet" href="/static/style.css">
-    <script>
+    
+    <script type="/static/styles.js">
+
+    </script>
+
+    <script src="/static/styles.js">
+    </script>
+    
+    <script >
+        const image = "/static/charging2.png"
         let map;
 
         function initMap() {
 
-            mapStyle = [
-                {
-                    "featureType": "all",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#ffffff"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "all",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "gamma": 0.01
-                        },
-                        {
-                            "lightness": 20
-                        }
-                    ]
-                },
-                {
-                    "featureType": "all",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "saturation": -31
-                        },
-                        {
-                            "lightness": -33
-                        },
-                        {
-                            "weight": 2
-                        },
-                        {
-                            "gamma": 0.8
-                        }
-                    ]
-                },
-                {
-                    "featureType": "all",
-                    "elementType": "labels.icon",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative.locality",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#050505"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative.locality",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "color": "#fef3f3"
-                        },
-                        {
-                            "weight": "3.01"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative.neighborhood",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#0a0a0a"
-                        },
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative.neighborhood",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "color": "#fffbfb"
-                        },
-                        {
-                            "weight": "3.01"
-                        },
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "landscape",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "lightness": 30
-                        },
-                        {
-                            "saturation": 30
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "saturation": 20
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi.attraction",
-                    "elementType": "labels.icon",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi.park",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "lightness": 20
-                        },
-                        {
-                            "saturation": -20
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "lightness": 10
-                        },
-                        {
-                            "saturation": -30
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "geometry.stroke",
-                    "stylers": [
-                        {
-                            "saturation": 25
-                        },
-                        {
-                            "lightness": 25
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.fill",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "color": "#a1a1a1"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.stroke",
-                    "stylers": [
-                        {
-                            "color": "#292929"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "color": "#202020"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "color": "#ffffff"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "labels.icon",
-                    "stylers": [
-                        {
-                            "visibility": "simplified"
-                        },
-                        {
-                            "hue": "#0006ff"
-                        },
-                        {
-                            "saturation": "-100"
-                        },
-                        {
-                            "lightness": "13"
-                        },
-                        {
-                            "gamma": "0.00"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "geometry.fill",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "color": "#686868"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "geometry.stroke",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        },
-                        {
-                            "color": "#8d8d8d"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "color": "#353535"
-                        },
-                        {
-                            "lightness": "6"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "color": "#ffffff"
-                        },
-                        {
-                            "weight": "3.45"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "geometry.fill",
-                    "stylers": [
-                        {
-                            "color": "#d0d0d0"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "geometry.stroke",
-                    "stylers": [
-                        {
-                            "lightness": "2"
-                        },
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "color": "#999898"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#383838"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "color": "#faf8f8"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "lightness": -20
-                        }
-                    ]
-                }
-            ]
 
             map = new google.maps.Map(document.getElementById("map"), {
                 center: {
                     lat: {{ origin['lat'] }},
-        lng: { { origin['lng'] } },
+                    lng: {{ origin['lng'] }},
                 },
         zoom: 12,
             mapTypeControlOptions: {
             mapTypeIds: ['roadmap']
         },
-        styles: mapStyle
+        styles: normal_color,
             });
 
+
+
         {% for charger in data %}
+        charger_info = document.getElementById("{{ charger.id }}main");
+        
+        var center{{ charger.id }} = {lat: {{ charger.lat }}, lng: {{ charger.lng }}};
+        // console.log(charger_info)
+        // console.log(center)
+        google.maps.event.addDomListener(charger_info, 'click', function() {
+            map.setCenter(center{{ charger.id }})
+            map.setZoom(16)
+        });
+        {% endfor %}
+
+
+
+    normal = document.getElementById("normal")
+    dark = document.getElementById("dark")
+    warm = document.getElementById("warm")
+
+
+        
+    normal.addEventListener("click", () => {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: {
+                lat: {{ origin['lat'] }},
+                lng: {{ origin['lng'] }},
+            },
+            zoom: 12,
+            mapTypeControlOptions: {
+                mapTypeIds: ['roadmap']
+            },
+            styles: normal_color,
+        });
+
+        new google.maps.Marker({
+            position: {
+                lat: {{ origin.lat }},
+                lng: {{ origin.lng }}
+                },
+            map,
+            icon :{
+                url:"/static/placeholder.png",
+                scaledSize: new google.maps.Size(45, 45)
+            },
+            });
+
+
+    {% for charger in data %}
         new google.maps.Marker({
             position: {
                 lat: {{ charger.lat }},
-            lng: {{ charger.lng }}
+                lng: {{ charger.lng }}
                 },
             map,
-            title: "Hello World!",
+            icon :{
+                url:image,
+                scaledSize: new google.maps.Size(45, 45)
+            },
+            });
+        {% endfor %}
+    })
+
+    dark.addEventListener("click", () => {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: {
+                lat: {{ origin['lat'] }},
+                lng: {{ origin['lng'] }},
+            },
+            zoom: 12,
+            mapTypeControlOptions: {
+                mapTypeIds: ['roadmap']
+            },
+            styles: grey,
+        });
+
+        new google.maps.Marker({
+            position: {
+                lat: {{ origin.lat }},
+                lng: {{ origin.lng }}
+                },
+            map,
+            icon :{
+                url:"/static/placeholder.png",
+                scaledSize: new google.maps.Size(45, 45)
+            },
+            });
+
+
+    {% for charger in data %}
+        new google.maps.Marker({
+            position: {
+                lat: {{ charger.lat }},
+                lng: {{ charger.lng }}
+                },
+            map,
+            icon :{
+                url:image,
+                scaledSize: new google.maps.Size(45, 45)
+            },
+            });
+        {% endfor %}
+    })
+
+    warm.addEventListener("click", () => {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: {
+                lat: {{ origin['lat'] }},
+                lng: {{ origin['lng'] }},
+            },
+            zoom: 12,
+            mapTypeControlOptions: {
+                mapTypeIds: ['roadmap']
+            },
+            styles: warm_color,
+        });
+
+        new google.maps.Marker({
+            position: {
+                lat: {{ origin.lat }},
+                lng: {{ origin.lng }}
+                },
+            map,
+            icon :{
+                url:"/static/placeholder.png",
+                scaledSize: new google.maps.Size(45, 45)
+            },
+            });
+
+
+    {% for charger in data %}
+        new google.maps.Marker({
+            position: {
+                lat: {{ charger.lat }},
+                lng: {{ charger.lng }}
+                },
+            map,
+            icon :{
+                url:image,
+                scaledSize: new google.maps.Size(45, 45)
+            },
+            });
+        {% endfor %}
+    })
+
+    new google.maps.Marker({
+            position: {
+                lat: {{ origin.lat }},
+                lng: {{ origin.lng }}
+                },
+            map,
+            icon :{
+                url:"/static/placeholder.png",
+                scaledSize: new google.maps.Size(45, 45)
+            },
+            });
+
+
+    {% for charger in data %}
+        new google.maps.Marker({
+            position: {
+                lat: {{ charger.lat }},
+                lng: {{ charger.lng }}
+                },
+            map,
+            icon :{
+                url:image,
+                scaledSize: new google.maps.Size(45, 45)
+            },
             });
         {% endfor %}
         }
 
-
-
-
-
-        // addMarker(newjj)
-
-
-        // var marker = new google.maps.Marker({
-        //         position: {
-        //             lat: 40.648926,
-        //             lng: -73.791323,
-        //         },
-        //         map: map
-        //     })
-
         window.initMap = initMap;
+
     </script>
 
     <title>Map</title>
@@ -436,14 +258,31 @@
         <div class="alert {{ category }}">{{msg}}</div>
         {% endfor %}
     </div>
-    <div id="block">
+
+    <div id="colors" style="display: None;">
+        <h4>Map Style</h4>
+        <button id="normal">
+            normal
+        </button>
+    
+        <button id="warm">
+            warm
+        </button>
+    
+        <button id="dark">
+            grey
+        </button>
+    
+    
+    </div>
+    <div id="block" style="display: None;">
 
 
         <div id="map"></div>
 
         <div id="scroll">
             {% for charger in data %}
-            <div class="location">
+            <div class="location" id="{{ charger.id }}main">
                 <h5>Charger# {{ charger.id }}</h5>
                 <span>{{charger.address}}</span>
                 <div class="center">
@@ -463,7 +302,12 @@
                         <div class="modal-header head">
                             <h5 class="modal-title" id="exampleModalLabel">Charger# {{ charger.id }}
                                 {% if charger.level > 2 %}
-                                <span class="supercharger">Supercharger</span>
+                                <div class="supercharger"> 
+                                    <i class="bi bi-lightning-fill"></i>
+                                    <span>
+                                        Supercharger
+                                    </span>  
+                                </div>
                                 {% endif %}
                             </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -492,13 +336,22 @@
                                     <span>{{ charger.level }}</span>
                                 </li>
 
-                                <a type="button" class="" data-toggle="modal"
-                                    data-target="#{{ charger.id }}reviews">Reviews</a>
+                                <li class="specs">
+                                    <label class="bold">Telephone</label>
+                                    <span>{{ charger.telephone }}</span>
+                                </li>
+
+
+                                
+                                <a class="directions" href="https://www.google.com/maps?daddr={{ charger.lat }},{{ charger.lng }}" target="_blank"> 
+                                    <img src="/static/map.png" alt="">Directions</a>
 
                             </ul>
 
                         </div>
                         <div class="modal-footer">
+                            <a class="directions" href="https://www.google.com/maps?daddr={{ charger.lat }},{{ charger.lng }}" target="_blank"> 
+                                    <img src="/static/map.png" alt=""></a>
                             <button type="button" class="cancel" data-dismiss="modal">Close</button>
                             <button type="button" class="submit" data-toggle="modal"
                                 data-target="#{{ charger.id }}pro-card">Card</button>
@@ -706,9 +559,21 @@
 
 
         {% endfor %}
+</div>
+<div id="battery">
 
-
+    <div class="outter">
+	<div class="inner"></div>
+	<div class="inner"></div>
+	<div class="inner"></div>
+</div>
+<div class="pole"></div>
+<div class="loading">
+    <h2>LOADING</h2>
     </div>
+
+</div>
+
 
 
     <script async
@@ -723,6 +588,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+    <script>
+
+        window.addEventListener('load', (event) => {
+            setTimeout(function () {
+                const map = document.getElementById("block")
+                const battery = document.getElementById("battery")
+                const colors = document.getElementById("colors")
+                
+                battery.style.display = "none";
+                map.style.display = "contents";
+                colors.style.display = "";
+
+                
+                
+    }, 4000);
+  
+});
+
+
+            
+    </script>
 
 </body>
 

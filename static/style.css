@@ -146,6 +146,10 @@ fieldset {
   /* margin: ; */
 }
 
+#scroll::-webkit-scrollbar {
+  display: none;
+}
+
 #modal-header {
   background-color: #657786;
 }
@@ -164,12 +168,15 @@ fieldset {
   -webkit-box-shadow: 0px 3px 0px 0px rgba(226, 228, 231, 0.75);
   -moz-box-shadow: 0px 3px 0px 0px rgba(226, 228, 231, 0.75);
   box-shadow: 0px 3px 0px 0px rgba(226, 228, 231, 0.75);
+  cursor: pointer;
 }
 
 .location h5 {
   background-color: #657786;
   font-weight: 700;
 }
+
+.location
 
 .center {
   display: flex;
@@ -184,12 +191,13 @@ fieldset {
 }
 
 .supercharger {
-  border-radius: 15px;
-  border: #DFA995;
-  color: #DFA995;
+  border-radius: 8px;
+  /* border: #DFA995; */
+  /* color: #DFA995; */
   border-style: solid;
   margin-left: 0;
   font-weight: 200;
+  font-size: .85em;
 
 }
 
@@ -1245,4 +1253,107 @@ p.card-bio {
 
 .john {
   background-color: #FFFAEC;
+}
+
+
+#battery {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.loading {
+  display: block;
+  position: absolute;
+  color: white;
+}
+
+.outter {
+	border: 5px solid #333;
+	width: 360px;
+	height: 192px;
+	display: flex;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+
+
+
+.inner {
+	background-color: #333;
+	height: 100%;
+	opacity: 0;
+	flex: 1;
+	animation: charging-1 3s infinite;
+	border-radius: 2px;
+}
+
+.inner:nth-child(2) {
+	margin: 0 3px;
+	animation: charging-2 3s infinite;
+}
+
+.inner:nth-child(3) {
+	animation: charging-3 3s infinite;
+}
+
+.pole {
+	background-color: #333;
+	height: 50px;
+	width: 9px;
+	border-radius: 0 5px 5px 0;
+}
+
+@keyframes charging-1 {
+	33%, 100% {
+		opacity: 1;
+	}
+}
+
+@keyframes charging-2 {
+	0%, 33% {
+		opacity: 0;
+	}
+	66%, 100% {
+		opacity: 1;
+	} 
+}
+
+@keyframes charging-3 {
+	0%, 66% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
+#colors {
+  /* display: flex; */
+  position: absolute;
+  right: 1em;
+  z-index: 3;
+  top: 7em;
+}
+
+#colors h4 {
+  width: 3em;
+  right: 0%;
+  text-align: right;
+  font-size: 1em;
+}
+
+#colors button {
+  display: block;
+  margin-left: auto;
+  width: 6em;
+  background-color: #1c94e0;
+}
+
+.directions img {
+  height: 2em;
+  width: 2em;
 }

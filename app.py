@@ -176,7 +176,7 @@ def home_pagee():
             "latitude": lat,
             "longitude": lng,
             "maxresults": max,
-            # "connectiontypeid" : port
+            "connectiontypeid" : port
             # "levelid": [2]
         })
 
@@ -196,6 +196,7 @@ def home_pagee():
         if charger:
             print("hello")
         else:
+            print(i["AddressInfo"]["ContactTelephone1"])
             line1 = i["AddressInfo"]["AddressLine1"] or ""
             town = i["AddressInfo"]["Town"] or ""
             state = i["AddressInfo"]["StateOrProvince"] or ""
@@ -212,8 +213,11 @@ def home_pagee():
             supercharger = True if i["Connections"][0]["LevelID"] == 3 else False
             usage_cost = i["UsageCost"]
             telephone = i["AddressInfo"]["ContactTelephone1"]
+            if telephone:
+                telephone = telephone[:12]
             email = i["AddressInfo"]["ContactEmail"]
             level = i["Connections"][0]["LevelID"]
+            print('telephone')
 
             charger = Station(
                 id=id, lat=lat, lng=lng, address=address, chargers_avail=chargers_avail,
@@ -272,6 +276,9 @@ def form_validate():
     lng = request.form['lng']
     port = request.form['port']
     max = request.form['max']
+    print("-----------------------[port")
+    print(port)
+    print("-----------------------[port")
 
     return redirect(f"/search?lat={lat}&lng={lng}&port={port}&max={max}")
 

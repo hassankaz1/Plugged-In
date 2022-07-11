@@ -6,6 +6,7 @@
 {% block content %}
 <link rel="stylesheet" href="/static/form.css">
 
+
 <script>
 
 
@@ -14,18 +15,7 @@
 
         const lat = document.getElementById("lat")
         const lng = document.getElementById("lng")
-
-        console.log(lat)
-        console.log(lng)
-
-        // map = new google.maps.Map(document.getElementById("map"), {
-        //     center: { lat: 70, lng: -32 },
-        //     zoom: 12,
-        //     mapTypeControlOptions: {
-        //         mapTypeIds: ['roadmap']
-        //     },
-        //     // styles: mapStyle
-        // });
+        const current_button = document.getElementById("current_button")
 
 
         const input = document.getElementById("autocomplete2");
@@ -45,6 +35,18 @@
             lng.value = place.geometry.location.lng()
         })
 
+        current_button.addEventListener("click", () => {
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+            input.value = "using current location"
+            lat.value = position.coords.latitude
+            lng.value = position.coords.longitude
+          })   
+    } 
+  });
+
     }
 
 
@@ -53,73 +55,98 @@
 
 
 </script>
-<style>
-    body {
-        background-image: url(https://aaaliving.acg.aaa.com/wp-content/uploads/2021/08/questions-about-electric-car-768x432.jpg);
-    }
-
-    .navbar {
-        background-color: transparent;
-    }
-</style>
 
 
 
 
-<div class="container-fluid">
-    <div class="row main-content bg-success text-center">
-        <div class="col-md-4 text-center company__info">
+
+<div class="container-fluid box">
+    <div class="row main-content text-center left">
+        <div class="col-md-4 company__info">
             <span class="company__logo">
                 <h2><span class="fa fa-android"></span></h2>
             </span>
-            <h4 class="company_title">Your Company Logo</h4>
+            <button class="curr" id="current_button">
+                <i class="bi bi-geo-alt-fill"></i>
+                Current Location
+            </button>
         </div>
-        <div class="col-md-8 col-xs-12 col-sm-12 login_form container ">
-            <div class="container-fluid">
+        <div class="col-md-8 col-xs-12 col-sm-12 login_form container in right">
+            <div class="container-fluid inner">
                 <div class="row">
-                    <h2>Log In</h2>
+                    
+                    <h2 class="space">Find A Charger</h2>
                 </div>
                 <div class="row">
-                    <form control="" class="form-group">
-                        <div class="row">
-                            <input class="form__input" type="text" id="autocomplete2" placeholder="enter your place">
+                    <form action="/formfor" class="form-group" id="searchform" method="POST">
+                        <div class="row ">
+                            <input class="form__input space" type="text" id="autocomplete2"
+                                placeholder="enter your place">
+
+                            <input id="lat" type="text" name="lat" style="display:none;">
+                            <input id="lng" type="text" name="lng" style="display:none;">
 
                         </div>
 
-                        <div class="options">
-                            <h2>Select Port Type<br><small>(leave empty for all results)</small></h2>
+                        <div class=" options space">
+                            <h5>Select Port Type</h5>
                             <div class="inline">
 
-                                <label for="click">
-                                    <input name="port" type="checkbox" value=27 id="tesla">
-                                    Tesla</label>
+                                <div>
+
+                                <input name="port" type="radio" value="" id="portall">
+                                <label for="portall">
+                                    <!-- <img src="/static/tessy.PNG"> -->
+                                    <span>View All</span></label>
+                                </div>
 
 
-                                <label for="sae">
-                                    <input name="port" type="checkbox" id="jplug" value=1>
-                                    J Plug</label>
+                                <input name="port" type="radio" value=27 id="porttesla">
+                                <label for="porttesla">
+                                    <img src="/static/tessy.PNG">
+                                    <span>Tesla</span></label>
 
-                                <label for="sae">
-                                    <input name="port" type="checkbox" id="css" value=32>
-                                    CSS (Type 1)</label>
+
+
+                                <input name="port" type="radio" id="portjplug" value=1>
+                                <label for="portjplug">
+                                    <img src="/static/jplu2.PNG">
+                                    <span>J-Plug</span>
+                                </label>
+
+
+                                <input name="port" type="radio" id="portcss" value=32>
+                                <label for="portcss">
+                                    <img src="/static/csstype1.PNG">
+                                    <span>CSS type-1</span>
+                                </label>
+
+                                <input name="port" type="radio" id="portchaedmo" value=2>
+                                <label for="portchaedmo">
+                                    <img src="/static/chaed.PNG">
+                                    <span>CHAdeMO</span>
+                                </label>
                             </div>
                         </div>
 
-                        <div class="range">
+                        <div class="range space">
+                            <div class="mid">
+                                <span>Max Results</span>
+                            </div>
                             <div class="sliderValue">
                                 <span id="val">100</span>
                             </div>
                             <div class="field">
                                 <div class="value left">
-                                    0</div>
-                                <input id="range" type="range" min="10" max="200" value="100" steps="1">
+                                    1</div>
+                                <input id="range" type="range" min="1" max="50" value="25" steps="1" name="max">
                                 <div class="value right">
-                                    200</div>
+                                    50</div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <button class="submit sub">Submit</button>
+                        <div class="row ">
+                            <button type="submit" class="submit sub" form="searchform">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -137,7 +164,7 @@
     inputSlider.oninput = (() => {
         let value = inputSlider.value;
         slideValue.textContent = value;
-        slideValue.style.left = (value / 2) + "%";
+        slideValue.style.left = (value*2) + "%";
         slideValue.classList.add("show");
     });
     inputSlider.onblur = (() => {

@@ -199,7 +199,7 @@ class Station(db.Model):
     )
     
     telephone = db.Column(
-        db.String(15),
+        db.Text,
     )
 
     email=db.Column(
