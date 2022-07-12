@@ -97,7 +97,7 @@ def trial_page():
     return render_template("trial.html", data=newList)
 
 
-@app.route('/signup', methods=["GET", "POST"])
+@app.route('/signup', methods=["POST"])
 def signup():
     """Handle user signup.
     Create new user and add to DB. Redirect to home page.
@@ -106,50 +106,51 @@ def signup():
     and re-present form.
     """
 
-    form = UserAddForm()
+    username = request.form["username"]
+    first_name = request.form["first_name"]
+    last_name = request.form["last_name"]
+    password = request.form["password"]
+    email = request.form["email"]
+    image_url = request.form["image_url"]
 
-    if form.validate_on_submit():
-        try:
-            user = User.signup(
-                username=form.username.data,
-                first_name=form.first_name.data,
-                last_name=form.last_name.data,
-                password=form.password.data,
-                email=form.email.data,
-                image_url=form.image_url.data or User.image_url.default.arg,
-            )
-            db.session.commit()
+    try:
+        user = User.signup(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            password=password,
+            email=email,
+            image_url=image_url or User.image_url.default.arg,
+        )
 
-        except IntegrityError:
-            flash("Username already taken", 'danger')
-            return render_template('users/signup.html', form=form)
+        db.session.commit()
 
-        do_login(user)
+    except IntegrityError:
+        flash("Username already taken", 'danger')
+        return render_template('login-sign.html')
 
-        return redirect("/")
+    do_login(user)
 
-    else:
-        return render_template('signup.html', form=form)
+    return redirect("/")
 
 
-@app.route('/login', methods=["GET", "POST"])
+@app.route('/login', methods=["POST"])
 def login():
     """Handle user login."""
 
-    form = LoginForm()
+    username = request.form["username"]
+    password = request.form["password"]
 
-    if form.validate_on_submit():
-        user = User.authenticate(form.username.data,
-                                 form.password.data)
+    user = User.authenticate(username, password)
 
-        if user:
-            do_login(user)
-            flash(f"Hello, {user.username}!", "success")
-            return redirect("/")
+    if user:
+        do_login(user)
+        flash(f"Hello, {user.username}!", "success")
+        return redirect("/profile/{user.id}")
 
-        flash("Invalid credentials.", 'danger')
+    flash("Invalid credentials.", 'danger')
 
-    return render_template('login.html', form=form)
+    return render_template('login-sign.html', form=form)
 
 
 @app.route('/logout')
@@ -176,7 +177,7 @@ def home_pagee():
             "latitude": lat,
             "longitude": lng,
             "maxresults": max,
-            "connectiontypeid" : port
+            "connectiontypeid": port
             # "levelid": [2]
         })
 
@@ -239,7 +240,7 @@ def home_pagee():
     return render_template("trial.html", origin=origin, data=newList, review_list=review_list)
 
 
-@app.route("/formfor", methods=["GET"])
+@app.route("/search-charger", methods=["GET"])
 def form():
     # """Handle user signup.
     # Create new user and add to DB. Redirect to home page.
@@ -316,7 +317,7 @@ def review(charger_id):
     description1 = review.description
     rating1 = review.rating
 
-    return description1
+    return render_template("profile/{g.user.id}")
 
 
 @app.route("/pro-card")
@@ -343,8 +344,6 @@ def edit_review(review_id):
     return redirect(f"/profile/{review.users_reviewed.id}")
 
 
-@app.route("/newpro")
+@app.route("/login-sign")
 def new_pro():
-    form = UserAddForm()
-
-    return render_template("login-sign.html",  form=form)
+    return render_template("login-sign.html")

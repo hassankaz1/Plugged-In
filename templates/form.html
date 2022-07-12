@@ -9,8 +9,6 @@
 
 <script>
 
-
-
     function initMap(data) {
 
         const lat = document.getElementById("lat")
@@ -18,9 +16,8 @@
         const current_button = document.getElementById("current_button")
 
 
-        const input = document.getElementById("autocomplete2");
+        const input = document.getElementById("autocomplete");
         const options = {
-            // bounds: defaultBounds,
             componentRestrictions: { country: "us" },
             fields: ["address_components", "geometry", "name"],
             strictBounds: false,
@@ -36,23 +33,18 @@
         })
 
         current_button.addEventListener("click", () => {
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-            input.value = "using current location"
-            lat.value = position.coords.latitude
-            lng.value = position.coords.longitude
-          })   
-    } 
-  });
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        input.value = "using current location"
+                        lat.value = position.coords.latitude
+                        lng.value = position.coords.longitude
+                    })
+            }
+        });
 
     }
-
-
-
-
-
 
 </script>
 
@@ -61,8 +53,8 @@
 
 
 <div class="container-fluid box">
-    <div class="row main-content text-center left">
-        <div class="col-md-4 company__info">
+    <div class="row text-center left-box">
+        <div class="col-md-4 current-location">
             <span class="company__logo">
                 <h2><span class="fa fa-android"></span></h2>
             </span>
@@ -71,17 +63,16 @@
                 Current Location
             </button>
         </div>
-        <div class="col-md-8 col-xs-12 col-sm-12 login_form container in right">
-            <div class="container-fluid inner">
+        <div class="col-md-8 col-xs-12 col-sm-12 login_form in right-box">
+            <div class="container-fluid inside">
                 <div class="row">
-                    
                     <h2 class="space">Find A Charger</h2>
                 </div>
                 <div class="row">
                     <form action="/formfor" class="form-group" id="searchform" method="POST">
                         <div class="row ">
-                            <input class="form__input space" type="text" id="autocomplete2"
-                                placeholder="enter your place">
+                            <input class="form__input space" type="text" id="autocomplete"
+                                placeholder="enter your place" required>
 
                             <input id="lat" type="text" name="lat" style="display:none;">
                             <input id="lng" type="text" name="lng" style="display:none;">
@@ -93,11 +84,9 @@
                             <div class="inline">
 
                                 <div>
-
-                                <input name="port" type="radio" value="" id="portall">
-                                <label for="portall">
-                                    <!-- <img src="/static/tessy.PNG"> -->
-                                    <span>View All</span></label>
+                                    <input name="port" type="radio" value="" id="portall" required>
+                                    <label for="portall">
+                                        <span>View All</span></label>
                                 </div>
 
 
@@ -164,7 +153,7 @@
     inputSlider.oninput = (() => {
         let value = inputSlider.value;
         slideValue.textContent = value;
-        slideValue.style.left = (value*2) + "%";
+        slideValue.style.left = (value * 2) + "%";
         slideValue.classList.add("show");
     });
     inputSlider.onblur = (() => {

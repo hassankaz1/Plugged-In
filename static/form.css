@@ -1,32 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,700;1,700&display=swap');
-@import 'https://fonts.googleapis.com/css?family=Overlock:400,400i,700|Oleo+Script';
 
 body {
-    /* background-image: url(https://singularityhub.com/wp-content/uploads/2022/03/electric-vehicles-EVs-cars.jpg); */
     background-color: #D3D3D3;
     font-family: 'Roboto Mono';
+    /* padding: 1em; */
 }
 
 .navbar {
     background-color: transparent;
 }
 
-/* body {
-    width: 100%;
-} */
-
-/* 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto Mono', monospace;
-} */
 
 h2 {
     font-weight: 700;
     text-decoration: underline;
-    
+
 }
 
 h5,
@@ -34,11 +22,40 @@ h2 {
     color: #F6F5F0;
 }
 
+/* left box */
 
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: calc(100% - 40px);
+}
 
+.left-box {
+    width: 75%;
+    margin: 5em auto;
+    position: relative;
+    height: 700px;
+    display: inline-block;
 
+}
 
-
+.current-location {
+    background-image: url(https://www.ksnlaw.com/blog/wp-content/uploads/2020/03/b.jpg);
+    background-position: 90% 30%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    color: black;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    margin-top: -200px;
+    z-index: 0;
+}
 
 .curr {
     background-color: transparent;
@@ -46,6 +63,34 @@ h2 {
     width: 60%;
     font-size: 1.5em;
 }
+
+/* right box */
+
+.right-box {
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    background-color: #474A59;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    font-weight: 700;
+
+}
+
+.inside {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.space {
+    margin-bottom: 20px;
+}
+
+/* slider style */
 
 .range {
     height: 80px;
@@ -57,6 +102,8 @@ h2 {
     margin-bottom: 1em;
     margin-top: 1em;
 }
+
+
 
 .sliderValue {
     position: relative;
@@ -160,76 +207,6 @@ h2 {
 }
 
 
-
-.main-content {
-    width: 75%;
-    /* box-shadow: 0 5px 5px rgba(0, 0, 0, .4); */
-    margin: 5em auto;
-    /* display: flex; */
-    position: relative;
-    height: 700px;
-    display: inline-block;
-
-}
-
-.company__info {
-    /* background-image: url(https://singularityhub.com/wp-content/uploads/2022/03/electric-vehicles-EVs-cars.jpg);
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: 60% 30%; */
-
-    background-image: url(https://www.ksnlaw.com/blog/wp-content/uploads/2020/03/b.jpg);
-    background-position: 90% 30%;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    color: black;
-    height: 400px;
-    position: absolute;
-    top: 50%;
-    margin-top: -200px;
-    z-index: 0;
-    /* width: 10em; */
-}
-
-
-
-
-/* @media screen and (max-width: 640px) {
-    .main-content {
-        width: 90%;
-    }
-
-    .company__info {
-        display: none;
-    }
-
-    .login_form {
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-    }
-}
-
-@media screen and (min-width: 642px) and (max-width:800px) {
-    .main-content {
-        width: 70%;
-    }
-} */
-
-
-
-.login_form {
-    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
-    color: #F1F1F2;
-    height: 100%;
-    z-index: 2;
-    position: absolute;
-    right: 0;
-
-}
-
 form {
     padding: 0 2em;
 }
@@ -251,20 +228,6 @@ form {
     box-shadow: 0 0 5px rgba(0, 80, 80, .4);
     border-radius: 4px;
 }
-
-/* .btn {
-    transition: all .5s ease;
-    width: 70%;
-    border-radius: 30px;
-    /* color: #008080; */
-/* font-weight: 600; 
-background-color: #fff;
-border: 1px solid #008080;
-margin-top: 1.5em;
-margin-bottom: 1em;
-}
-
-*/
 
 .row {
     justify-content: center;
@@ -288,56 +251,17 @@ margin-bottom: 1em;
     color: #fff;
 }
 
-
-
-.container {
-    /* position: relative; */
-    /* width: 260px; */
-    /* height: 260px; */
-    /* border-radius: 5px; */
-    /* background: rgba(3, 3, 3, 0.25); */
-    /* box-shadow: 1px 1px 50px #000; */
-    background-color: #474A59;
-    /* color: white; */
-    font-weight: 700;
-
-}
-
-.inner {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-.space {
-    margin-bottom: 20px;
-}
-
-
 input {
     background: white;
     border: 0;
     outline: 0;
     border-bottom: 1px solid #45494C;
     font-size: 14px;
-    /* color: #959595; */
     padding: 8px 0;
     margin-top: 20px;
     font-weight: 700;
     color: black;
     font-size: 1.5em;
-}
-
-
-.box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    height: calc(100% - 40px);
 }
 
 
@@ -401,10 +325,4 @@ label img {
     transform: scale(0.9);
     /* box-shadow: 0 0 5px #333; */
     z-index: -1;
-}
-
-.right {
-    align-items: center;
-    justify-content: center;
-
 }

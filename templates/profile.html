@@ -33,49 +33,56 @@
     <div class="profile-content">
         <h2>Reviews</h2>
         <div class="centery">
-            {% for review in user.reviews %}
+            {% if user.reviews|length < 1 %} <h3 class="no-review">Currently no reviews</h3>
 
-            <div class="selfreview">
+                {% endif %}
 
 
-                <figure class="snip15689">
-                    <figcaption>
-                        <h3>@{{ review.users_reviewed.username }}</h3>
-                        <h4>{{review.title}}</h4>
-                        <div>
-                            {% for i in range(0, 5) %}
-                            {% if review.rating - i == 0.5 %}
-                            <i class="bi bi-star-half"></i>
-                            {% elif review.rating - i >= 1 %}
-                            <i class="bi bi-star-fill"></i>
-                            {% else %}
-                            <i class="bi bi-star"></i>
-                            {% endif %}
-                            {% endfor %}
+                {% for review in user.reviews %}
+
+                <div class="selfreview">
+
+
+                    <figure class="snip15689">
+                        <figcaption>
+                            <h3>@{{ review.users_reviewed.username }}</h3>
+                            <h4>{{review.title}}</h4>
+                            <div>
+                                {% for i in range(0, 5) %}
+                                {% if review.rating - i == 0.5 %}
+                                <i class="bi bi-star-half"></i>
+                                {% elif review.rating - i >= 1 %}
+                                <i class="bi bi-star-fill"></i>
+                                {% else %}
+                                <i class="bi bi-star"></i>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="over">
+                                <p>{{review.description}}</p>
+                            </div>
+
+                            <button type="button" class="" data-toggle="modal"
+                                data-target="#{{ review.id }}edit">Edit</button>
+
+                        </figcaption>
+                        <div class="profile-image">
+                            <h3>Charger #{{ review.stations_reviewed.id }}</h2>
                         </div>
-                        <div class="over">
-                            <p>{{review.description}}</p>
-                        </div>
+                    </figure>
+                </div>
 
-                        <button type="button" class="" data-toggle="modal"
-                            data-target="#{{ review.id }}edit">Edit</button>
-
-                    </figcaption>
-                    <div class="profile-image">
-                        <h3>Charger #{{ review.stations_reviewed.id }}</h2>
-                    </div>
-                </figure>
-            </div>
-
-            {% endfor %}
+                {% endfor %}
 
         </div>
+        {% if user.reviews|length > 0 %}
         <div>
             <form action="/viewmap/{user.id}" class="viewmap">
                 <button class="">View On
                     Map</button>
             </form>
         </div>
+        {% endif %}
     </div>
 </div>
 

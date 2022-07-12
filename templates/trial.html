@@ -9,7 +9,6 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/static/pro-card.css">
 
@@ -33,7 +32,7 @@
             map = new google.maps.Map(document.getElementById("map"), {
                 center: {
                     lat: {{ origin['lat'] }},
-        lng: { { origin['lng'] } },
+                    lng: {{ origin['lng'] }},
                 },
         zoom: 12,
             mapTypeControlOptions: {
@@ -47,7 +46,10 @@
         {% for charger in data %}
         charger_info = document.getElementById("{{ charger.id }}main");
 
-        var center{{ charger.id }} = { lat: { { charger.lat } }, lng: { { charger.lng } } };
+        var center{{ charger.id }} = {
+            lat: {{ charger.lat }},
+            lng: {{ charger.lng }}
+        };
         // console.log(charger_info)
         // console.log(center)
         google.maps.event.addDomListener(charger_info, 'click', function () {
@@ -223,19 +225,18 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand">
+    <nav class="navbar navbar-expand" id="nav">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="/" class="navbar-brand">
-                    <img src="https://png.pngtree.com/png-vector/20191027/ourmid/pngtree-charging-station-glyph-icon-vector-png-image_1886776.jpg"
-                        alt="logo">
+                    <img src="/static/icons8-plug-64.png" alt="logo" id="logo">
                     <span>Plugged In</span>
                 </a>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 {% if not g.user %}
-                <li><a href="/signup">Sign up</a></li>
-                <li><a href="/login">Log in</a></li>
+                <li><a href="/formfor">New Search</a></li>
+                <li><a href="/newpro">Log in</a></li>
                 {% else %}
                 <li>
                     <a href="/users/{{ g.user.id }}">
@@ -272,9 +273,8 @@
         <button id="dark">
             grey
         </button>
-
-
     </div>
+
     <div id="block" style="display: None;">
 
 
@@ -356,9 +356,8 @@
                                 href="https://www.google.com/maps?daddr={{ charger.lat }},{{ charger.lng }}"
                                 target="_blank">
                                 <img src="/static/map.png" alt=""></a>
-                            <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                            <button type="button" class="submit" data-toggle="modal"
-                                data-target="#{{ charger.id }}pro-card">Card</button>
+                            <button type="button" class="submit card-button" data-toggle="modal"
+                                data-target="#{{ charger.id }}pro-card">View Reviews</button>
                             {% if g.user %}
                             {% if charger.id not in review_list%}
                             <button type="button" class="submit" data-toggle="modal"
@@ -466,31 +465,34 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        {% if charger.reviews|length < 1 %} 
+                        <h6>Currently no reviews</h6>
+                        {% endif %}
 
-                        {% for review in charger.reviews %}
-                        <div class="individual">
-                            <div>
-                                <h6>@{{ review.users_reviewed.username }}</h6>
+                            {% for review in charger.reviews %}
+                            <div class="individual">
+                                <div>
+                                    <h6>@{{ review.users_reviewed.username }}</h6>
+                                </div>
+                                <div>
+                                    {% for i in range(0, 5) %}
+                                    {% if review.rating - i == 0.5 %}
+                                    <i class="bi bi-star-half"></i>
+                                    {% elif review.rating - i >= 1 %}
+                                    <i class="bi bi-star-fill"></i>
+                                    {% else %}
+                                    <i class="bi bi-star"></i>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                                <h5 class="bold">{{review.title}}</h5>
+                                <div>
+                                    {{review.description}}</div>
+
                             </div>
-                            <div>
-                                {% for i in range(0, 5) %}
-                                {% if review.rating - i == 0.5 %}
-                                <i class="bi bi-star-half"></i>
-                                {% elif review.rating - i >= 1 %}
-                                <i class="bi bi-star-fill"></i>
-                                {% else %}
-                                <i class="bi bi-star"></i>
-                                {% endif %}
-                                {% endfor %}
-                            </div>
 
-                            <h5 class="bold">{{review.title}}</h5>
-                            <div>
-                                {{review.description}}</div>
-
-                        </div>
-
-                        {% endfor %}
+                            {% endfor %}
 
                     </div>
                     <div class="modal-footer">
@@ -516,6 +518,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        {% if charger.reviews|length < 1 %} 
+                        <h6>Currently no reviews</h6>
+                        {% endif %}
                         <div class="scroll-horizontal">
 
 

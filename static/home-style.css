@@ -1,21 +1,14 @@
 /* https://codepen.io/woutervanderzee/pen/GOPyYO */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,700;1,700&display=swap');
+
 
 body {
-    font-family: 'PT Sans Caption', "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    font-family: 'Roboto Mono', monospace;
     font-size: 3vh;
-}
-
-
-body {
-    /* margin: 20px; 
-    height: 100vh; */
-
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-
 }
-
 
 
 #header {
@@ -31,6 +24,13 @@ body {
     font-weight: bold;
 }
 
+#login {
+    font-size: 3vh;
+    color: white;
+    text-decoration: none;
+
+}
+
 #menu-icon {
     font-family: Geneva, sans-serif;
     font-size: 6vh;
@@ -38,7 +38,7 @@ body {
 
 
 
-.hero {
+.main-body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -50,7 +50,7 @@ body {
     background-size: cover;
 }
 
-.hero-title {
+.main-title {
     max-width: 16em;
     margin: 0;
     font-size: 12vh;
@@ -59,12 +59,12 @@ body {
 }
 
 @media only screen and (min-width: 32em) {
-    .hero-title {
+    .main-title {
         font-size: 16vh;
     }
 }
 
-.hero-footer {
+.main-footer {
     display: flex;
     margin-bottom: 1em;
 }
@@ -74,7 +74,6 @@ body {
     color: white;
     text-decoration: none;
     border: .1em solid white;
-
 }
 
 .button-primary {
@@ -88,10 +87,6 @@ article {
     max-width: 36em;
     margin: 0 auto;
     padding: 1em;
-}
-
-#logo>img {
-    background-color: transparent;
 }
 
 h2 {

@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,700;1,700&display=swap');
 
 
-
+.navbar {
+  padding: 1em;
+}
 
 
 fieldset,
@@ -12,8 +14,6 @@ label {
 }
 
 body {
-  /* margin: 20px; 
-  height: 100vh; */
 
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -813,6 +813,7 @@ p.card-bio {
   border-style: solid;
   border-color: #000;
   overflow: auto;
+  background-color: #c0c0c0;
 
 }
 
@@ -898,7 +899,7 @@ p.card-bio {
 
 .profile-content {
   margin-top: 0;
-  height: 60%;
+  /* height: 60%; */
   width: 100%;
 }
 
@@ -970,6 +971,14 @@ p.card-bio {
   height: 500px;
   padding-top: 20px;
   background-color: #B3BBCD;
+}
+
+.no-review {
+  text-align: center;
+  font-size: 1em;
+  /* width: 4em; */
+  color: white;
+  background-color: black;
 }
 
 .post-title-name {
@@ -1363,4 +1372,8 @@ p.card-bio {
 .directions img {
   height: 2em;
   width: 2em;
+}
+
+.card-button {
+  background-color: green;
 }
