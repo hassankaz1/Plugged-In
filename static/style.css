@@ -176,9 +176,7 @@ fieldset {
   font-weight: 700;
 }
 
-.location
-
-.center {
+.location .center {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1257,10 +1255,10 @@ p.card-bio {
 
 
 #battery {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .loading {
@@ -1270,64 +1268,73 @@ p.card-bio {
 }
 
 .outter {
-	border: 5px solid #333;
-	width: 360px;
-	height: 192px;
-	display: flex;
-	padding: 5px;
-	border-radius: 5px;
+  border: 5px solid #333;
+  width: 360px;
+  height: 192px;
+  display: flex;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 
 
 
 .inner {
-	background-color: #333;
-	height: 100%;
-	opacity: 0;
-	flex: 1;
-	animation: charging-1 3s infinite;
-	border-radius: 2px;
+  background-color: #333;
+  height: 100%;
+  opacity: 0;
+  flex: 1;
+  animation: charging-1 3s infinite;
+  border-radius: 2px;
 }
 
 .inner:nth-child(2) {
-	margin: 0 3px;
-	animation: charging-2 3s infinite;
+  margin: 0 3px;
+  animation: charging-2 3s infinite;
 }
 
 .inner:nth-child(3) {
-	animation: charging-3 3s infinite;
+  animation: charging-3 3s infinite;
 }
 
 .pole {
-	background-color: #333;
-	height: 50px;
-	width: 9px;
-	border-radius: 0 5px 5px 0;
+  background-color: #333;
+  height: 50px;
+  width: 9px;
+  border-radius: 0 5px 5px 0;
 }
 
 @keyframes charging-1 {
-	33%, 100% {
-		opacity: 1;
-	}
+
+  33%,
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes charging-2 {
-	0%, 33% {
-		opacity: 0;
-	}
-	66%, 100% {
-		opacity: 1;
-	} 
+
+  0%,
+  33% {
+    opacity: 0;
+  }
+
+  66%,
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes charging-3 {
-	0%, 66% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+
+  0%,
+  66% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 
@@ -1350,7 +1357,7 @@ p.card-bio {
   display: block;
   margin-left: auto;
   width: 6em;
-  background-color: #1c94e0;
+  background-color: #EADDCA;
 }
 
 .directions img {

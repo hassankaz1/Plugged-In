@@ -15,7 +15,8 @@
                 'marginLeft': '100%'
             });
 
-            $("#nav").css("background-color", "black")
+            $("#nav").css("background-color", "black").css("color", "white")
+            $("#logo").attr("src", "static/icons8-plug-64 whitw.png")
         });
         $('#goLeft').on('click', function () {
             $('#slideBox').animate({
@@ -25,6 +26,8 @@
                 'marginLeft': '0'
             });
             $("#nav").css("background-color", "white")
+            $("#logo").attr("src", "static/icons8-plug-64.png")
+
 
         });
     });

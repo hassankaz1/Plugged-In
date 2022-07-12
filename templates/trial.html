@@ -15,15 +15,15 @@
 
 
     <link rel="stylesheet" href="/static/style.css">
-    
+
     <script type="/static/styles.js">
 
     </script>
 
     <script src="/static/styles.js">
     </script>
-    
-    <script >
+
+    <script>
         const image = "/static/charging2.png"
         let map;
 
@@ -33,7 +33,7 @@
             map = new google.maps.Map(document.getElementById("map"), {
                 center: {
                     lat: {{ origin['lat'] }},
-                    lng: {{ origin['lng'] }},
+        lng: { { origin['lng'] } },
                 },
         zoom: 12,
             mapTypeControlOptions: {
@@ -46,171 +46,171 @@
 
         {% for charger in data %}
         charger_info = document.getElementById("{{ charger.id }}main");
-        
-        var center{{ charger.id }} = {lat: {{ charger.lat }}, lng: {{ charger.lng }}};
+
+        var center{{ charger.id }} = { lat: { { charger.lat } }, lng: { { charger.lng } } };
         // console.log(charger_info)
         // console.log(center)
-        google.maps.event.addDomListener(charger_info, 'click', function() {
+        google.maps.event.addDomListener(charger_info, 'click', function () {
             map.setCenter(center{{ charger.id }})
-            map.setZoom(16)
+        map.setZoom(16)
         });
         {% endfor %}
 
 
 
-    normal = document.getElementById("normal")
-    dark = document.getElementById("dark")
-    warm = document.getElementById("warm")
+        normal = document.getElementById("normal")
+        dark = document.getElementById("dark")
+        warm = document.getElementById("warm")
 
 
-        
-    normal.addEventListener("click", () => {
-        map = new google.maps.Map(document.getElementById("map"), {
-            center: {
-                lat: {{ origin['lat'] }},
-                lng: {{ origin['lng'] }},
+
+        normal.addEventListener("click", () => {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {
+                    lat: {{ origin['lat'] }},
+            lng: {{ origin['lng'] }},
             },
             zoom: 12,
             mapTypeControlOptions: {
-                mapTypeIds: ['roadmap']
-            },
+            mapTypeIds: ['roadmap']
+        },
             styles: normal_color,
         });
 
         new google.maps.Marker({
             position: {
                 lat: {{ origin.lat }},
-                lng: {{ origin.lng }}
+            lng: {{ origin.lng }}
                 },
             map,
-            icon :{
-                url:"/static/placeholder.png",
-                scaledSize: new google.maps.Size(45, 45)
-            },
+            icon : {
+            url: "/static/placeholder.png",
+            scaledSize: new google.maps.Size(45, 45)
+        },
             });
 
 
-    {% for charger in data %}
+        {% for charger in data %}
         new google.maps.Marker({
             position: {
                 lat: {{ charger.lat }},
-                lng: {{ charger.lng }}
+            lng: {{ charger.lng }}
                 },
             map,
-            icon :{
-                url:image,
-                scaledSize: new google.maps.Size(45, 45)
-            },
+            icon : {
+            url: image,
+            scaledSize: new google.maps.Size(45, 45)
+        },
             });
         {% endfor %}
     })
 
-    dark.addEventListener("click", () => {
-        map = new google.maps.Map(document.getElementById("map"), {
-            center: {
-                lat: {{ origin['lat'] }},
-                lng: {{ origin['lng'] }},
+        dark.addEventListener("click", () => {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {
+                    lat: {{ origin['lat'] }},
+            lng: {{ origin['lng'] }},
             },
             zoom: 12,
             mapTypeControlOptions: {
-                mapTypeIds: ['roadmap']
-            },
+            mapTypeIds: ['roadmap']
+        },
             styles: grey,
         });
 
         new google.maps.Marker({
             position: {
                 lat: {{ origin.lat }},
-                lng: {{ origin.lng }}
+            lng: {{ origin.lng }}
                 },
             map,
-            icon :{
-                url:"/static/placeholder.png",
-                scaledSize: new google.maps.Size(45, 45)
-            },
+            icon : {
+            url: "/static/placeholder.png",
+            scaledSize: new google.maps.Size(45, 45)
+        },
             });
 
 
-    {% for charger in data %}
+        {% for charger in data %}
         new google.maps.Marker({
             position: {
                 lat: {{ charger.lat }},
-                lng: {{ charger.lng }}
+            lng: {{ charger.lng }}
                 },
             map,
-            icon :{
-                url:image,
-                scaledSize: new google.maps.Size(45, 45)
-            },
+            icon : {
+            url: image,
+            scaledSize: new google.maps.Size(45, 45)
+        },
             });
         {% endfor %}
     })
 
-    warm.addEventListener("click", () => {
-        map = new google.maps.Map(document.getElementById("map"), {
-            center: {
-                lat: {{ origin['lat'] }},
-                lng: {{ origin['lng'] }},
+        warm.addEventListener("click", () => {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {
+                    lat: {{ origin['lat'] }},
+            lng: {{ origin['lng'] }},
             },
             zoom: 12,
             mapTypeControlOptions: {
-                mapTypeIds: ['roadmap']
-            },
+            mapTypeIds: ['roadmap']
+        },
             styles: warm_color,
         });
 
         new google.maps.Marker({
             position: {
                 lat: {{ origin.lat }},
-                lng: {{ origin.lng }}
+            lng: {{ origin.lng }}
                 },
             map,
-            icon :{
-                url:"/static/placeholder.png",
-                scaledSize: new google.maps.Size(45, 45)
-            },
+            icon : {
+            url: "/static/placeholder.png",
+            scaledSize: new google.maps.Size(45, 45)
+        },
             });
 
 
-    {% for charger in data %}
+        {% for charger in data %}
         new google.maps.Marker({
             position: {
                 lat: {{ charger.lat }},
-                lng: {{ charger.lng }}
+            lng: {{ charger.lng }}
                 },
             map,
-            icon :{
-                url:image,
-                scaledSize: new google.maps.Size(45, 45)
-            },
+            icon : {
+            url: image,
+            scaledSize: new google.maps.Size(45, 45)
+        },
             });
         {% endfor %}
     })
 
-    new google.maps.Marker({
+        new google.maps.Marker({
             position: {
                 lat: {{ origin.lat }},
-                lng: {{ origin.lng }}
+            lng: {{ origin.lng }}
                 },
             map,
-            icon :{
-                url:"/static/placeholder.png",
-                scaledSize: new google.maps.Size(45, 45)
-            },
+            icon : {
+            url: "/static/placeholder.png",
+            scaledSize: new google.maps.Size(45, 45)
+        },
             });
 
 
-    {% for charger in data %}
+        {% for charger in data %}
         new google.maps.Marker({
             position: {
                 lat: {{ charger.lat }},
-                lng: {{ charger.lng }}
+            lng: {{ charger.lng }}
                 },
             map,
-            icon :{
-                url:image,
-                scaledSize: new google.maps.Size(45, 45)
-            },
+            icon : {
+            url: image,
+            scaledSize: new google.maps.Size(45, 45)
+        },
             });
         {% endfor %}
         }
@@ -260,20 +260,20 @@
     </div>
 
     <div id="colors" style="display: None;">
-        <h4>Map Style</h4>
+        <h4>Map Theme</h4>
         <button id="normal">
             normal
         </button>
-    
+
         <button id="warm">
             warm
         </button>
-    
+
         <button id="dark">
             grey
         </button>
-    
-    
+
+
     </div>
     <div id="block" style="display: None;">
 
@@ -302,11 +302,11 @@
                         <div class="modal-header head">
                             <h5 class="modal-title" id="exampleModalLabel">Charger# {{ charger.id }}
                                 {% if charger.level > 2 %}
-                                <div class="supercharger"> 
+                                <div class="supercharger">
                                     <i class="bi bi-lightning-fill"></i>
                                     <span>
                                         Supercharger
-                                    </span>  
+                                    </span>
                                 </div>
                                 {% endif %}
                             </h5>
@@ -342,16 +342,20 @@
                                 </li>
 
 
-                                
-                                <a class="directions" href="https://www.google.com/maps?daddr={{ charger.lat }},{{ charger.lng }}" target="_blank"> 
+
+                                <a class="directions"
+                                    href="https://www.google.com/maps?daddr={{ charger.lat }},{{ charger.lng }}"
+                                    target="_blank">
                                     <img src="/static/map.png" alt="">Directions</a>
 
                             </ul>
 
                         </div>
                         <div class="modal-footer">
-                            <a class="directions" href="https://www.google.com/maps?daddr={{ charger.lat }},{{ charger.lng }}" target="_blank"> 
-                                    <img src="/static/map.png" alt=""></a>
+                            <a class="directions"
+                                href="https://www.google.com/maps?daddr={{ charger.lat }},{{ charger.lng }}"
+                                target="_blank">
+                                <img src="/static/map.png" alt=""></a>
                             <button type="button" class="cancel" data-dismiss="modal">Close</button>
                             <button type="button" class="submit" data-toggle="modal"
                                 data-target="#{{ charger.id }}pro-card">Card</button>
@@ -559,20 +563,20 @@
 
 
         {% endfor %}
-</div>
-<div id="battery">
-
-    <div class="outter">
-	<div class="inner"></div>
-	<div class="inner"></div>
-	<div class="inner"></div>
-</div>
-<div class="pole"></div>
-<div class="loading">
-    <h2>LOADING</h2>
     </div>
+    <div id="battery">
 
-</div>
+        <div class="outter">
+            <div class="inner"></div>
+            <div class="inner"></div>
+            <div class="inner"></div>
+        </div>
+        <div class="pole"></div>
+        <div class="loading">
+            <h2>LOADING</h2>
+        </div>
+
+    </div>
 
 
 
@@ -596,19 +600,19 @@
                 const map = document.getElementById("block")
                 const battery = document.getElementById("battery")
                 const colors = document.getElementById("colors")
-                
+
                 battery.style.display = "none";
                 map.style.display = "contents";
                 colors.style.display = "";
 
-                
-                
-    }, 4000);
-  
-});
 
 
-            
+            }, 4000);
+
+        });
+
+
+
     </script>
 
 </body>
