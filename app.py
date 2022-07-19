@@ -144,9 +144,10 @@ def login():
     user = User.authenticate(username, password)
 
     if user:
+        print(user.id)
         do_login(user)
         flash(f"Hello, {user.username}!", "success")
-        return redirect("/profile/{user.id}")
+        return redirect(f"/profile/{user.id}")
 
     flash("Invalid credentials.", 'danger')
 

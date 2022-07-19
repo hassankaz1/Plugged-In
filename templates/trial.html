@@ -465,9 +465,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        {% if charger.reviews|length < 1 %} 
-                        <h6>Currently no reviews</h6>
-                        {% endif %}
+                        {% if charger.reviews|length < 1 %} <h6>Currently no reviews</h6>
+                            {% endif %}
 
                             {% for review in charger.reviews %}
                             <div class="individual">
@@ -518,43 +517,40 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        {% if charger.reviews|length < 1 %} 
-                        <h6>Currently no reviews</h6>
-                        {% endif %}
-                        <div class="scroll-horizontal">
+                        {% if charger.reviews|length < 1 %} <h6>Currently no reviews</h6>
+                            {% endif %}
+                            <div class="scroll-horizontal">
 
 
-                            {% for review in charger.reviews %}
+                                {% for review in charger.reviews %}
 
-                            <figure class="snip1568">
-                                <figcaption>
-                                    <h3>@{{ review.users_reviewed.username }}</h3>
-                                    <h4>{{review.title}}</h4>
-                                    <div>
-                                        {% for i in range(0, 5) %}
-                                        {% if review.rating - i == 0.5 %}
-                                        <i class="bi bi-star-half"></i>
-                                        {% elif review.rating - i >= 1 %}
-                                        <i class="bi bi-star-fill"></i>
-                                        {% else %}
-                                        <i class="bi bi-star"></i>
-                                        {% endif %}
-                                        {% endfor %}
+                                <figure class="snip1568">
+                                    <figcaption>
+                                        <h3>@{{ review.users_reviewed.username }}</h3>
+                                        <h4>{{review.title}}</h4>
+                                        <div>
+                                            {% for i in range(0, 5) %}
+                                            {% if review.rating - i == 0.5 %}
+                                            <i class="bi bi-star-half"></i>
+                                            {% elif review.rating - i >= 1 %}
+                                            <i class="bi bi-star-fill"></i>
+                                            {% else %}
+                                            <i class="bi bi-star"></i>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        <div class="over">
+                                            <p>{{review.description}}</p>
+                                        </div>
+                                    </figcaption>
+                                    <div class="profile-image">
+                                        <a href="/profile/{{ review.users_reviewed.id }}">
+                                            <img src="{{ review.users_reviewed.image_url }}" alt="profile-sample2" />
+                                        </a>
                                     </div>
-                                    <div class="over">
-                                        <p>{{review.description}}</p>
-                                    </div>
-                                </figcaption>
-                                <div class="profile-image"><img src="{{ review.users_reviewed.image_url }}"
-                                        alt="profile-sample2" />
-                                    <div class="icons"><a href="#"><i class="ion-social-reddit"></i></a>
-                                        <a href="#"> <i class="ion-social-twitter"></i></a>
-                                        <a href="#"> <i class="ion-social-vimeo"></i></a>
-                                    </div>
-                                </div>
-                            </figure>
-                            {% endfor %}
-                        </div>
+                                </figure>
+                                {% endfor %}
+                            </div>
 
                     </div>
                     <div class="modal-footer">
