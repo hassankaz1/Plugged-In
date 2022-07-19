@@ -55,6 +55,7 @@ def do_logout():
 
 @app.route("/")
 def home_page():
+    """Retuen Home Page"""
 
     return render_template("home.html")
 
@@ -179,7 +180,6 @@ def home_pagee():
             "longitude": lng,
             "maxresults": max,
             "connectiontypeid": port
-            # "levelid": [2]
         })
 
     data = r.json()
@@ -218,8 +218,8 @@ def home_pagee():
             if telephone:
                 telephone = telephone[:12]
             email = i["AddressInfo"]["ContactEmail"]
-            level = i["Connections"][0]["LevelID"]
-            print('telephone')
+            level = i["Connections"][0]["LevelID"] 
+            print("level----------", level) 
 
             charger = Station(
                 id=id, lat=lat, lng=lng, address=address, chargers_avail=chargers_avail,
@@ -243,25 +243,7 @@ def home_pagee():
 
 @app.route("/search-charger", methods=["GET"])
 def form():
-    # """Handle user signup.
-    # Create new user and add to DB. Redirect to home page.
-    # If form not valid, present form.
-    # If the there already is a user with that username: flash message
-    # and re-present form.
-    # """
 
-    # if request.method == "POST":
-    #     lat = request.form.lat.data
-    #     lng = request.form.lng.data
-    #     port = request.form.port.data
-    #     max = request.form.max.data
-
-    #     # print(type(lat))
-    #     # print(type(lng))
-
-    #     return redirect(f"/search?lat={lat}&lng={lng}&port={port}&max={max}")
-
-    # else:
     return render_template('form.html')
 
 
@@ -278,11 +260,26 @@ def form_validate():
     lng = request.form['lng']
     port = request.form['port']
     max = request.form['max']
-    print("-----------------------[port")
-    print(port)
-    print("-----------------------[port")
+
 
     return redirect(f"/search?lat={lat}&lng={lng}&port={port}&max={max}")
+
+
+@app.route("/quick-search", methods=["POST"])
+def form_quick_search():
+    """Handle user signup.
+    Create new user and add to DB. Redirect to home page.
+    If form not valid, present form.
+    If the there already is a user with that username: flash message
+    and re-present form.
+    """
+
+    lat = request.form['latq']
+    lng = request.form['lngq']
+    max = 50
+
+
+    return redirect(f"/search?lat={lat}&lng={lng}&max={max}")
 
 
 @app.route("/review", methods=["GET", "POST"])

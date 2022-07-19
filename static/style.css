@@ -820,8 +820,9 @@ p.card-bio {
 .profile-banner {
   height: 40%;
   width: 100%;
-  background-image: url('https://picsum.photos/seed/picsum/1000/520');
+  background-image: url('https://images.squarespace-cdn.com/content/v1/5d7b795d1d74f17f87f61893/22f4ed5f-d45d-44ed-b43e-b62898585cca/img.jpeg?format=1000w');
   background-size: 100%;
+  background-position: 0% 60%;
   border-radius: 10px;
 }
 
@@ -849,6 +850,7 @@ p.card-bio {
   border-radius: 50%;
   height: 100%;
   width: 100%;
+  size: 100%;
 }
 
 .add-frnd {

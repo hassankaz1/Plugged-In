@@ -203,7 +203,7 @@ class Station(db.Model):
     )
 
     email=db.Column(
-        db.String(20),
+        db.Text,
     )
 
     chargers_avail=db.Column(

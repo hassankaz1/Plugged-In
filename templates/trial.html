@@ -235,8 +235,8 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 {% if not g.user %}
-                <li><a href="/formfor">New Search</a></li>
-                <li><a href="/newpro">Log in</a></li>
+                <li><a href="/search-charger">New Search</a></li>
+                <li><a href="/login-sign">Log in</a></li>
                 {% else %}
                 <li>
                     <a href="/users/{{ g.user.id }}">
@@ -301,6 +301,7 @@
                     <div class="modal-content">
                         <div class="modal-header head">
                             <h5 class="modal-title" id="exampleModalLabel">Charger# {{ charger.id }}
+                                {% if charger.level %}
                                 {% if charger.level > 2 %}
                                 <div class="supercharger">
                                     <i class="bi bi-lightning-fill"></i>
@@ -308,6 +309,7 @@
                                         Supercharger
                                     </span>
                                 </div>
+                                {% endif %}
                                 {% endif %}
                             </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">

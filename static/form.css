@@ -211,23 +211,8 @@ form {
     padding: 0 2em;
 }
 
-.form__input {
-    width: 100%;
-    border: 0px solid transparent;
-    border-radius: 0;
-    border-bottom: 1px solid #aaa;
-    padding: 1em .5em .5em;
-    padding-left: 2em;
-    outline: none;
-    margin: 1.5em auto;
-    transition: all .5s ease;
-}
 
-.form__input:focus {
-    border-bottom-color: #008080;
-    box-shadow: 0 0 5px rgba(0, 80, 80, .4);
-    border-radius: 4px;
-}
+
 
 .row {
     justify-content: center;
@@ -244,7 +229,7 @@ form {
 }
 
 
-.curr:hover,
+.location-icon:hover,
 .sub:hover,
 .sub:focus {
     /* background-color: #008006; */
@@ -326,3 +311,60 @@ label img {
     /* box-shadow: 0 0 5px #333; */
     z-index: -1;
 }
+
+.wrapper {
+    position: relative;
+    display: flex;
+    /* min-width: 100px; */
+
+    /* width: 30%; */
+    /* position: absolute; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+  }
+
+.form__input {
+    width: 100%;
+    /* height: 2.3em; */
+    /* border: 0px solid transparent; */
+    /* border-radius: 0; */
+    /* border-bottom: 1px solid #aaa; */
+    /* padding: 1em .5em .5em; */
+    padding-left: 2em;
+    /* outline: none; */
+    /* margin: 1.5em auto; */
+    /* transition: all .5s ease; */
+    border-radius: 0.4em 0 0 0.4em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
+}
+
+.location-icon {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 3em;
+    /* height: 3em; */
+    /* text-align: center; */
+    padding: 0;
+
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 0 0.4em 0.4em 0;
+    box-shadow: 0;
+    /* margin-bottom: .1em */
+    /* margin-top: 0; */
+    position: relative;
+    background: url("loccklk.png");
+    background-size: 100%;
+    background-color: #FF6600;
+    background-repeat: no-repeat;
+  }
+
+
+
+
+
