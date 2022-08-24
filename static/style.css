@@ -803,7 +803,6 @@ p.card-bio {
 
 .profile {
   height: 90vh;
-  /* background-color: #CAD8EB; */
   width: 80%;
   margin: 0 auto;
   margin-top: 1em;
@@ -813,7 +812,7 @@ p.card-bio {
   border-style: solid;
   border-color: #000;
   overflow: auto;
-  background-color: #c0c0c0;
+  background-color: white;
 
 }
 
@@ -903,6 +902,7 @@ p.card-bio {
   margin-top: 0;
   /* height: 60%; */
   width: 100%;
+  /* position: relative; */
 }
 
 .profile-content div {
@@ -1118,8 +1118,30 @@ p.card-bio {
   color: #0079FA;
 }
 
-.profile-content>h2 {
+.cent{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+  /* position: relative;
+  text-align: center; */
+
+  /* width: 10em; */
+
+}
+
+.cent>h2 {
+  /* position: absolute; */
   text-align: center;
+  border-radius: 5px;
+  background-color: #1c94e0;
+  width: 10em;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 600;
+  /* justify-content: center; */
+
+
+
+
 }
 
 .namesofs {
@@ -1127,7 +1149,7 @@ p.card-bio {
 }
 
 
-.snip15689 {
+.star-rating {
   font-family: 'Roboto Mono', monospace;
 
   position: relative;
@@ -1148,7 +1170,7 @@ p.card-bio {
 
 
 
-.snip15689 * {
+.star-rating * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -1167,7 +1189,7 @@ p.card-bio {
 
 }
 
-.snip15689 figcaption {
+.star-rating figcaption {
   width: 100%;
   background-color: #B3BBCD;
   color: #fff;
@@ -1178,7 +1200,7 @@ p.card-bio {
   position: relative;
 }
 
-.snip15689 figcaption:after {
+.star-rating figcaption:after {
   content: '';
   position: absolute;
   left: 32px;
@@ -1190,34 +1212,34 @@ p.card-bio {
   border-color: #333333 transparent transparent transparent;
 }
 
-.snip15689 h3,
-.snip15689 h4,
-.snip15689 p {
+.star-rating h3,
+.star-rating h4,
+.star-rating p {
   margin: 0 0 5px;
 }
 
-.snip15689 h3 {
+.star-rating h3 {
   font-weight: 600;
   font-size: 1.2em;
 }
 
-.snip15689 h4 {
+.star-rating h4 {
   color: #657786;
   font-weight: 400;
   letter-spacing: 2px;
 }
 
-.snip15689 p {
+.star-rating p {
   font-size: 0.9em;
   letter-spacing: 1px;
   opacity: 0.9;
 }
 
-.snip15689 .icons {
+.star-rating .icons {
   padding: 20px 90px;
 }
 
-.snip15689 i {
+.star-rating i {
   padding: 10px 2px;
   display: inline-block;
   font-size: 18px;
@@ -1226,7 +1248,7 @@ p.card-bio {
   opacity: 0.75;
 }
 
-.snip15689 i:hover {
+.star-rating i:hover {
   opacity: 1;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
@@ -1379,3 +1401,4 @@ p.card-bio {
 .card-button {
   background-color: green;
 }
+

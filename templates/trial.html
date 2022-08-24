@@ -11,16 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/static/pro-card.css">
-
-
     <link rel="stylesheet" href="/static/style.css">
-
-    <script type="/static/styles.js">
-
-    </script>
-
-    <script src="/static/styles.js">
-    </script>
+    <script src="/static/styles.js"></script>
 
     <script>
         const image = "/static/charging2.png"
@@ -526,7 +518,7 @@
 
                                 {% for review in charger.reviews %}
 
-                                <figure class="snip1568">
+                                <figure class="star-rating">
                                     <figcaption>
                                         <h3>@{{ review.users_reviewed.username }}</h3>
                                         <h4>{{review.title}}</h4>

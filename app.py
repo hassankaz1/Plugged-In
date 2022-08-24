@@ -55,7 +55,7 @@ def do_logout():
 
 @app.route("/")
 def home_page():
-    """Retuen Home Page"""
+    """Return Home Page"""
 
     return render_template("home.html")
 
@@ -243,6 +243,8 @@ def home_pagee():
 
 @app.route("/search-charger", methods=["GET"])
 def form():
+    """Return page to search for charger"""
+
 
     return render_template('form.html')
 
@@ -267,11 +269,8 @@ def form_validate():
 
 @app.route("/quick-search", methods=["POST"])
 def form_quick_search():
-    """Handle user signup.
-    Create new user and add to DB. Redirect to home page.
-    If form not valid, present form.
-    If the there already is a user with that username: flash message
-    and re-present form.
+    """Handle Quick Search.
+    Take user current location and show search results
     """
 
     lat = request.form['latq']
@@ -282,24 +281,26 @@ def form_quick_search():
     return redirect(f"/search?lat={lat}&lng={lng}&max={max}")
 
 
-@app.route("/review", methods=["GET", "POST"])
-def form_review():
-    if request.method == "POST":
-        rating = float(request.form["rating"])
-        text = request.form["txt"]
+# @app.route("/review", methods=["GET", "POST"])
+# def form_review():
+#     ""
+#     if request.method == "POST":
+#         rating = float(request.form["rating"])
+#         text = request.form["txt"]
 
-        return render_template("stars.html", star=rating)
-    else:
-        return render_template("review.html")
+#         return render_template("stars.html", star=rating)
+#     else:
+#         return render_template("review.html")
 
 
-@app.route("/yea")
-def yea():
-    return render_template("tttt.html")
+# @app.route("/yea")
+# def yea():
+#     return render_template("tttt.html")
 
 
 @app.route("/review/<int:charger_id>", methods=["POST"])
 def review(charger_id):
+    """Handle form to review charging station"""
     rating = float(request.form["rating"])
     title = request.form["title"]
     description = request.form["description"]
@@ -311,11 +312,11 @@ def review(charger_id):
     db.session.add(review)
     db.session.commit()
 
-    title1 = review.title
-    description1 = review.description
-    rating1 = review.rating
+    # title1 = review.title
+    # description1 = review.description
+    # rating1 = review.rating
 
-    return render_template("profile/{g.user.id}")
+    return redirect(f"/profile/{g.user.id}")
 
 
 @app.route("/pro-card")

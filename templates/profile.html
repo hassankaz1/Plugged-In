@@ -31,7 +31,9 @@
 
 
     <div class="profile-content">
-        <h2>Reviews</h2>
+        <div class="cent">
+        <h2 id="pro-heading">Reviews</h2>
+        </div>
         <div class="centery">
             {% if user.reviews|length < 1 %} <h3 class="no-review">Currently no reviews</h3>
 
@@ -43,7 +45,7 @@
                 <div class="selfreview">
 
 
-                    <figure class="snip15689">
+                    <figure class="star-rating">
                         <figcaption>
                             <h3>@{{ review.users_reviewed.username }}</h3>
                             <h4>{{review.title}}</h4>

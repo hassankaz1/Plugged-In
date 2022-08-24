@@ -27,7 +27,8 @@ function initMap(data) {
     })
 
     if(current_button){
-    current_button.addEventListener("click", () => {
+    current_button.addEventListener("click", (e) => {
+        e.preventDefault()
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -35,12 +36,18 @@ function initMap(data) {
                     input.value = "using current location"
                     lat.value = position.coords.latitude
                     lng.value = position.coords.longitude
+                },
+                (error) => {
+                    alert(error.message + "\nPLEASE CHECK BROWSER SETTINGS")
                 })
         }
+
     });
 }
 
-    quick_button.addEventListener("click", () => {
+    quick_button.addEventListener("click", (e) => {
+        e.preventDefault()
+        
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -49,10 +56,11 @@ function initMap(data) {
                     lngq.value = position.coords.longitude;
 
                     quickForm.submit();
-
-                    console.log(position.coords.latitude, position.coords.longitude)
+                },
+                (error) => {
+                    alert(error.message + "\nPLEASE CHECK BROWSER SETTINGS")
                 })
-        }
+        } 
     });
 
 }
@@ -61,28 +69,3 @@ function initMap(data) {
 
 
 
-
-
-// function initMap(data) {
-
-//     const lat = document.getElementById("latq")
-//     const lng = document.getElementById("lngq")
-//     const quick_button = document.getElementById("quick")
-//     const quickForm = document.getElementById('quickForm')
-
-//     quick_button.addEventListener("click", () => {
-//         // Try HTML5 geolocation.
-//         if (navigator.geolocation) {
-//             navigator.geolocation.getCurrentPosition(
-//                 (position) => {
-//                     lat.value = position.coords.latitude;
-//                     lng.value = position.coords.longitude;
-
-//                     quickForm.submit();
-
-//                     console.log(position.coords.latitude, position.coords.longitude)
-//                 })
-//         }
-//     });
-
-// }

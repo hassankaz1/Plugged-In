@@ -7,51 +7,6 @@
 <link rel="stylesheet" href="/static/form.css">
 
 
-<!-- <script>
-
-    function initMap(data) {
-
-        const lat = document.getElementById("lat")
-        const lng = document.getElementById("lng")
-        const current_button = document.getElementById("current_button")
-
-
-        const input = document.getElementById("autocomplete");
-        const options = {
-            componentRestrictions: { country: "us" },
-            fields: ["address_components", "geometry", "name"],
-            strictBounds: false,
-            types: ["establishment"],
-        };
-        const autocomplete = new google.maps.places.Autocomplete(input, options);
-
-
-        autocomplete.addListener("place_changed", () => {
-            const place = autocomplete.getPlace();
-            lat.value = place.geometry.location.lat()
-            lng.value = place.geometry.location.lng()
-        })
-
-        current_button.addEventListener("click", () => {
-            // Try HTML5 geolocation.
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        input.value = "using current location"
-                        lat.value = position.coords.latitude
-                        lng.value = position.coords.longitude
-                    })
-            }
-        });
-
-    }
-
-</script> -->
-
-
-
-
-
 <div class="container-fluid box">
     <div class="row text-center left-box">
         <div class="col-md-4 current-location">
@@ -71,10 +26,7 @@
                                 placeholder="enter your place" required>
 
                             <button class="location-icon" id="current_button">
-                                <!-- <img src="/static/location-arrow.png" alt=""> -->
                             </button>
-                            <!-- <img class="location-icon" src="/static/location-arrow.png" /> -->
-
                             </div>
                             <input id="lat" type="text" name="lat" style="display:none;">
                             <input id="lng" type="text" name="lng" style="display:none;">
@@ -162,8 +114,6 @@
         slideValue.classList.remove("show");
     });
 </script>
-
-
 
 
 
