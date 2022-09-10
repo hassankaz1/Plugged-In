@@ -168,8 +168,8 @@
 
 
 {% endfor %}
-
-
+{% if g.user %}
+{% if user == g.user %}
 <div class="modal fade popup" id="edit-profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -216,6 +216,8 @@
         </div>
     </div>
 </div>
+{% endif %}
+{% endif %}
 
 
 

@@ -1405,3 +1405,7 @@ p.card-bio {
 label {
   font-weight: 600;
 }
+
+.dfpic {
+  max-width: 6em;
+}

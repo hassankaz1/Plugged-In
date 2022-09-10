@@ -41,7 +41,7 @@ h2 {
 }
 
 .current-location {
-    background-image: url(https://www.ksnlaw.com/blog/wp-content/uploads/2020/03/b.jpg);
+    background-image: url(images/charging-ev.jpeg);
     background-position: 90% 30%;
     background-color: white;
     display: flex;
@@ -336,7 +336,7 @@ label img {
     border-radius: 0 0.4em 0.4em 0;
     box-shadow: 0;
     position: relative;
-    background: url("loccklk.png");
+    background: url("images/loccklk.png");
     background-size: 100%;
     background-color: #FF6600;
     background-repeat: no-repeat;

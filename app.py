@@ -3,6 +3,7 @@ import imp
 import re
 from types import MethodType
 import requests
+from API_KEYS import google_api, charge_key
 from flask import Flask, redirect, render_template, request, flash, session, g, abort
 from sqlalchemy import desc
 from forms import SearchForm, UserAddForm, LoginForm
@@ -13,6 +14,10 @@ from sqlalchemy.exc import IntegrityError
 CURR_USER_KEY = "curr_user"
 
 app = Flask(__name__)
+
+key = charge_key
+
+
 
 
 app.config['SECRET_KEY'] = "secret"
@@ -25,7 +30,7 @@ app.config['SQLALCHEMY_ECHO'] = True
 connect_db(app)
 db.create_all()
 
-key = "d4855048-93df-4d32-b484-5540d3e4a1e6"
+
 url = "https://api.openchargemap.io/v3/poi"
 
 
@@ -38,6 +43,8 @@ def add_user_to_g():
 
     else:
         g.user = None
+    
+    g.google_api = google_api
 
 
 def do_login(user):
@@ -60,42 +67,6 @@ def home_page():
     return render_template("home.html")
 
 
-@app.route("/trial")
-def trial_page():
-    """Redirects to Home Page"""
-    r = requests.get(
-        url,
-        params={
-            "key": key,
-            "latitude": 40.648926,
-            "longitude": -73.791323,
-            "maxresults": 30,
-            # "levelid": [1]
-        })
-
-    data = r.json()
-
-    newList = []
-
-    newList.append({
-        "lat": 40.648926,
-        "lng": -73.791323,
-        "address": "happy",
-    })
-
-    for i in data:
-        newList.append({
-            "lat": i["AddressInfo"]["Latitude"],
-            "lng": i["AddressInfo"]["Longitude"],
-            "address": i["AddressInfo"]["AddressLine1"],
-        })
-
-    # num = len(newList)
-
-        # newList.append([i["Connections"][0]["ConnectionType"]["FormalName"],
-        #                i["Connections"][0]["ConnectionTypeID"], i["Connections"][0]["LevelID"]])
-
-    return render_template("trial.html", data=newList)
 
 
 @app.route('/signup', methods=["POST"])
@@ -165,8 +136,8 @@ def logout():
 
 
 @app.route("/search")
-def home_pagee():
-    """Redirects to Home Page"""
+def search_charge():
+    """Finds chargers and marks on map"""
     lat = request.args.get('lat')
     lng = request.args.get('lng')
     max = request.args.get('max')
@@ -238,7 +209,7 @@ def home_pagee():
         for review in g.user.reviews:
             review_list.append(review.stations_reviewed.id)
 
-    return render_template("trial.html", origin=origin, data=newList, review_list=review_list)
+    return render_template("map.html", origin=origin, data=newList, review_list=review_list, zoom=12)
 
 
 @app.route("/search-charger", methods=["GET"])
@@ -248,14 +219,10 @@ def form():
 
     return render_template('form.html')
 
-
 @app.route("/formfor", methods=["POST"])
 def form_validate():
-    """Handle user signup.
-    Create new user and add to DB. Redirect to home page.
-    If form not valid, present form.
-    If the there already is a user with that username: flash message
-    and re-present form.
+    """Handle user searching for chargers.
+    Redirect to search
     """
 
     lat = request.form['lat']
@@ -265,6 +232,8 @@ def form_validate():
 
 
     return redirect(f"/search?lat={lat}&lng={lng}&port={port}&max={max}")
+
+
 
 
 @app.route("/quick-search", methods=["POST"])
@@ -281,22 +250,6 @@ def form_quick_search():
     return redirect(f"/search?lat={lat}&lng={lng}&max={max}")
 
 
-# @app.route("/review", methods=["GET", "POST"])
-# def form_review():
-#     ""
-#     if request.method == "POST":
-#         rating = float(request.form["rating"])
-#         text = request.form["txt"]
-
-#         return render_template("stars.html", star=rating)
-#     else:
-#         return render_template("review.html")
-
-
-# @app.route("/yea")
-# def yea():
-#     return render_template("tttt.html")
-
 
 @app.route("/review/<int:charger_id>", methods=["POST"])
 def review(charger_id):
@@ -312,16 +265,10 @@ def review(charger_id):
     db.session.add(review)
     db.session.commit()
 
-    # title1 = review.title
-    # description1 = review.description
-    # rating1 = review.rating
 
     return redirect(f"/profile/{g.user.id}")
 
 
-@app.route("/pro-card")
-def pro():
-    return render_template("pro-card.html")
 
 
 @app.route("/profile/<int:user_id>")
@@ -369,15 +316,12 @@ def view_map(user_id):
         charger = review.stations_reviewed
         charger_list.append(charger)
 
-    print("--------",user.reviews[0].stations_reviewed.lat)
 
     origin = {
-        "lat": user.reviews[0].stations_reviewed.lat,
-        "lng": user.reviews[0].stations_reviewed.lng,
+        "lat": 39.5,
+        "lng": -98.35,
         "address": "happy",
     }
-
-
 
 
     review_list = []
@@ -385,7 +329,7 @@ def view_map(user_id):
         for review in g.user.reviews:
             review_list.append(review.stations_reviewed.id)
     
-    return render_template("trial.html", origin=origin, data=charger_list, review_list=review_list)
+    return render_template("map.html", origin=origin, data=charger_list, review_list=review_list, zoom=5)
 
 
 @app.route("/login-sign")
