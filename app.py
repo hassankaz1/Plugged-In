@@ -22,7 +22,7 @@ key = charge_key
 
 app.config['SECRET_KEY'] = "secret"
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    os.environ.get('DATABASE_URL', 'postgresql:///capstone'))
+    os.environ.get('DATABASE_URL', 'postgresql:///ev_charger_project'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 # app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
