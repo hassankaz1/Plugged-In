@@ -1402,3 +1402,6 @@ p.card-bio {
   background-color: green;
 }
 
+label {
+  font-weight: 600;
+}

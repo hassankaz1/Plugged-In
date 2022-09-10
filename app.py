@@ -342,6 +342,51 @@ def edit_review(review_id):
 
     return redirect(f"/profile/{review.users_reviewed.id}")
 
+@app.route("/edit-profile/<int:user_id>", methods=["POST"])
+def edit_profile(user_id):
+    user = User.query.get(user_id)
+    if(user != g.user):
+        flash("Not authorized to edit the profile")
+        return redirect("/")
+
+
+    user.first_name = request.form["first_name"]
+    user.last_name = request.form["last_name"]
+    user.last_name = request.form["last_name"]
+    user.email = request.form["email"]
+    user.image_url = request.form["picture"]
+    user.cover_photo = request.form["cover_photo"]
+    db.session.commit()
+
+    return redirect(f"/profile/{user.id}")
+
+@app.route("/viewmap/<int:user_id>")
+def view_map(user_id):
+    user = User.query.get(user_id)
+    charger_list = []
+
+    for review in user.reviews:
+        charger = review.stations_reviewed
+        charger_list.append(charger)
+
+    print("--------",user.reviews[0].stations_reviewed.lat)
+
+    origin = {
+        "lat": user.reviews[0].stations_reviewed.lat,
+        "lng": user.reviews[0].stations_reviewed.lng,
+        "address": "happy",
+    }
+
+
+
+
+    review_list = []
+    if g.user != None:
+        for review in g.user.reviews:
+            review_list.append(review.stations_reviewed.id)
+    
+    return render_template("trial.html", origin=origin, data=charger_list, review_list=review_list)
+
 
 @app.route("/login-sign")
 def new_pro():

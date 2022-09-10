@@ -48,6 +48,11 @@ class User(db.Model):
         default="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
     )
 
+    cover_photo = db.Column(
+        db.Text,
+        default="https://images.squarespace-cdn.com/content/v1/5d7b795d1d74f17f87f61893/22f4ed5f-d45d-44ed-b43e-b62898585cca/img.jpeg?format=1000w"
+    )
+
     password = db.Column(
         db.Text,
         nullable=False,
