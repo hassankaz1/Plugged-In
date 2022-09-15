@@ -2,7 +2,7 @@
 Enter your location, find chargers near you. Leave reviews for others. 
 
 
-![main](https://imgur.com/gallery/lVVpPiq)
+![main](https://imgur.com/gallery/lVVpPiq.gif)
 
 
 Plugged In is a personal project where users can find EV chargers around the area they specify. They can also create an account and leave reviews for the chargers they have visited. 
