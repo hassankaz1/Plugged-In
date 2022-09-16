@@ -38,6 +38,9 @@ The GET request responses is comprised of a list of charging stations. For each 
 
 </center>
 
+<p align="center">
+  <img src="https://github.com/hassankaz1/Plugged-In/blob/master/gifs/find-chargergiphy.gif" alt="animated" />
+</p>
 
 Users are also able to create an account. Through this account they may leave reviews on charging stations for others to view. All users can view active users and the reviews they have left. Users with a created account may also edit both their profile information as well as any reviews they have left. 
 
