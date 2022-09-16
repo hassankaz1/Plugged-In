@@ -34,7 +34,7 @@ The GET request responses is comprised of a list of charging stations. For each 
 
 <center>
 
-![search](https://media1.giphy.com/media/VOJwoHS0ArzmEuf4Bu/giphy.gif)
+![search](https://media4.giphy.com/media/VOJwoHS0ArzmEuf4Bu/giphy.gif?cid=790b76118bc2ceacfb8f77878fdce4361e2e9a43b59f670d&rid=giphy.gif&ct=g)
 
 </center>
 
