@@ -33,7 +33,7 @@ The backend is implemented with python and flask.  Users will fill out a form wh
 The GET request responses is comprised of a list of charging stations. For each charging station, we check if the charging station is already on our database. If it is then we use our DB data to push to the user, else we will add the charging station including it's information to our DB. <br>
 
 <p align="center">
-  <img src="https://media4.giphy.com/media/VOJwoHS0ArzmEuf4Bu/giphy.gif?cid=790b76118bc2ceacfb8f77878fdce4361e2e9a43b59f670d&rid=giphy.gif&ct=g" alt="animated" />
+  <img src="https://media1.giphy.com/media/VOJwoHS0ArzmEuf4Bu/giphy.gif" alt="animated" />
 </p>
 
 
