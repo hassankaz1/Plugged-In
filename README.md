@@ -32,11 +32,9 @@ Plugged In is a personal project where users can find EV chargers around the are
 The backend is implemented with python and flask.  Users will fill out a form which takes in a location, the charging ports and search result amounts. Using the form inputs, a GET request is sent to the Open Charge Map API. <br>
 The GET request responses is comprised of a list of charging stations. For each charging station, we check if the charging station is already on our database. If it is then we use our DB data to push to the user, else we will add the charging station including it's information to our DB. <br>
 
-<center>
-
-![search](https://media4.giphy.com/media/VOJwoHS0ArzmEuf4Bu/giphy.gif?cid=790b76118bc2ceacfb8f77878fdce4361e2e9a43b59f670d&rid=giphy.gif&ct=g)
-
-</center>
+<p align="center">
+  <img src="/gifs/find-chargergiphy.gif" alt="animated" />
+</p>
 
 
 Users are also able to create an account. Through this account they may leave reviews on charging stations for others to view. All users can view active users and the reviews they have left. Users with a created account may also edit both their profile information as well as any reviews they have left. 
